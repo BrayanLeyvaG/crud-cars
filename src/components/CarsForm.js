@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import './CarsForm.css'
 
 export const CarsForm = ({getData, carSelected, setCarSelected}) => {
     const [brand, setBrand] = useState("")
@@ -56,48 +57,53 @@ export const CarsForm = ({getData, carSelected, setCarSelected}) => {
 
 
   return (
-    <form onSubmit={submitForm}>
-        <div>
-            <label htmlFor='brand'>Brand</label>
+    <form onSubmit={submitForm} className='m-5 p-5'>
+        <div className='mb-3'>
+            <label htmlFor='brand' className='form-label'>Brand</label>
             <input
+                className='form-control'
                 type='text'
                 onChange={e => setBrand(e.target.value)}
                 value={brand}
             ></input>
         </div>
-        <div>
-            <label htmlFor='model'>Model</label>
+        <div className='mb-3'>
+            <label htmlFor='model' className='form-label'>Model</label>
             <input
+                className='form-control'
                 type='text'
                 onChange={e => setModel(e.target.value)}
                 value={model}
             ></input>
         </div>
-        <div>
-            <label htmlFor='color'>Color</label>
+        <div className='mb-3'>
+            <label htmlFor='color' className='form-label'>Color</label>
             <input
+                className='form-control'
                 type='text'
                 onChange={e => setColor(e.target.value)}
                 value={color}
             ></input>
         </div>
-        <div>
-            <label htmlFor='year'>Year</label>
+        <div className='mb-3'>
+            <label htmlFor='year' className='form-label'>Year</label>
             <input
+                className='form-control'
                 type='number'
                 onChange={e => setYear(e.target.value)}
                 value={year}
             ></input>
         </div>
-        <div>
-            <label htmlFor='price'>Price</label>
+        <div className='mb-3'>
+            <label htmlFor='price' className='form-label'>Price</label>
             <input
+                className='form-control'
                 type='text'
                 onChange={e => setPrice(e.target.value)}
                 value={price}
             ></input>
         </div>
-        <button type='submit'>Add Car</button>
+        <button type='submit' className='btn btn-primary'>Add Car</button>
     </form>
   )
 }
