@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import {useEffect, useState} from 'react'
+import { CarsList } from './components/CarsList';
+import { CarsForm } from './components/CarsForm';
 
 function App() {
+
+  const [carSelected, setCarSelected] = useState(null)
+  const [cars, setCars] = useState([])
+
+  function getData() {
+    axios.get('https://cars-crud.herokuapp.com/cars/')
+      .then(res => setCars(res.data))
+  }
+
+  function deleteData(car) {
+    axios.delete(`https://cars-crud.herokuapp.com/cars/${car.id}/`)
+      .then(() => getData())
+  }
+  
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CarsForm getData={getData} carSelected={carSelected} setCarSelected={setCarSelected}/>
+      <CarsList cars={cars} setCarSelected={setCarSelected} deleteData={deleteData}/>
     </div>
   );
 }
