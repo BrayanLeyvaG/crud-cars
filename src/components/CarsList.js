@@ -11,8 +11,8 @@ export const CarsList = ({cars, setCarSelected, deleteData}) => {
                 <p><b>Year: </b>{car.year}</p>
                 <p><b>Price: </b>{car.price}</p>
                 <div className='d-flex justify-content-evenly'>
-                    <button className='btn btn-danger' onClick={() => deleteData(car)}>Delete</button>
                     <button className='btn btn-warning' onClick={() => setCarSelected(car)}>Edit</button>     
+                    <button className='btn btn-danger' onClick={() => deleteData(car)}>Delete</button>
                 </div>
             </li>
         ))}
